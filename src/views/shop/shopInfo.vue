@@ -32,9 +32,10 @@
       </el-table-column>
       <el-table-column prop="shop_create_date" label="创建时间">
       </el-table-column>
-      <el-table-column label="操作" width="250px">
+      <el-table-column label="操作" width="350px">
         <template slot-scope="scope">
           <el-button @click="()=>$router.push('/shop/shopCategory/'+scope.row.id)" size="mini" type="primary">分类管理</el-button>
+          <el-button @click="()=>$router.push('/goods/addGoods/'+scope.row.id)" size="mini" type="primary">添加商品</el-button>
           <el-button @click="()=>$router.push('/shop/editShop/'+scope.row.id)" size="mini" type="default">编辑</el-button>
           <el-button @click="deleteShop(scope.row.id)" size="mini" type="danger" plain>删除</el-button>
         </template>
@@ -54,6 +55,7 @@
   import {
     mapGetters
   } from 'vuex';
+  import { getToken } from '@/utils/auth' // 验权
   export default {
     data() {
       return {
@@ -90,7 +92,8 @@
         }).then(() => {
           this.fullscreenLoading = true;
           this.$store.dispatch('DeleteShop', {
-            ShopId: Id
+            ShopId: Id,
+            AdminToken: getToken()
           }).then(response => {
             this.fullscreenLoading = false;
             this.updatedData();
@@ -118,7 +121,7 @@
             shop_summary: i.shop_summary,
             like_count: i.like_count,
             shop_name: i.shop_name,
-            shop_score: parseFloat((i.shop_score.goods + i.shop_score.service + i.shop_score.ship) / 3),
+            shop_score: parseFloat((i.shop_score.service + i.shop_score.ship) / 3),
             shop_create_date: parseTime(i.shop_create_date, '{y}-{m}-{d}')
           })
         })

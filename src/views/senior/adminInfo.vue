@@ -51,6 +51,7 @@
   import {
     mapGetters
   } from 'vuex';
+  import { getToken } from '@/utils/auth' // 验权
   export default {
     data() {
       return {
@@ -103,7 +104,7 @@
         }).then(() => {
           this.fullscreenLoading = true;
           this.$store.dispatch('DeleteAdmin', {
-            token: token
+            AdminToken: token
           }).then(response => {
             this.fullscreenLoading = false;
             this.updatedData();
@@ -113,7 +114,9 @@
         })
       },
       async updatedData() {
-        let Data = await this.$store.dispatch('AdminList');
+        let Data = await this.$store.dispatch('AdminList',{
+          AdminToken: getToken()
+        });
         return this.setData(Data);
       },
       async initData() {

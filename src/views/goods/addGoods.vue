@@ -226,7 +226,15 @@
         })
       },
       async initData() {
-        this.Form.shopId = this.$route.params.shopId && this.$route.params.shopId!== ':shopId' ? this.$route.params.shopId : 0; //这里的：id 不知道怎么解决
+        if(!this.$route.params.shopId){
+          Message({
+            message: '店铺id不能为空',
+            type: 'error',
+            duration: 2000
+          })
+          return this.$router.go(-1)
+        }
+        this.Form.shopId = this.$route.params.shopId;
         let categoryData = await this.$store.dispatch('GetAllCategory');
         let List = [];
         categoryData.Data.map((item, index, array) => {

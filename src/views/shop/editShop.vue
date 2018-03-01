@@ -88,6 +88,7 @@
   import VDistpicker from 'v-distpicker'
   import VueDPlayer from 'vue-dplayer'
   import img_404 from '@/assets/404_images/image404.png'
+  import { getToken } from '@/utils/auth' // 验权
   import {
     parseTime
   } from '@/utils'
@@ -152,6 +153,7 @@
         const FromData = {
           Id: this.Form.id,
           shop_name: this.Form.shop_name,
+          AdminToken: getToken(),
           cms_content: this.Form.cms_content,
           category_info: this.Form.category_info,
           goods_list: this.Form.goods_list,

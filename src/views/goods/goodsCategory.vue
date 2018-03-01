@@ -58,6 +58,8 @@
 </template>
 
 <script>
+  import { getToken } from '@/utils/auth' // 验权
+  
   export default {
     data() {
       return {
@@ -111,6 +113,7 @@
         this.fullscreenLoading = true;
         const formData = {
           Id: this.Form.id,
+          AdminToken: getToken(),
           name: this.Form.name,
           image_url: this.uploadFile.uploadImageList,
           parentId: this.Form.parentId,
@@ -132,6 +135,8 @@
           this.fullscreenLoading = false;
           this.$message.success('修改成功');
           this.initData();
+        }, err => {
+            this.fullscreenLoading = false
         })
       },
       handlePictureCardPreview(file) { //预览图片
@@ -178,6 +183,8 @@
             this.fullscreenLoading = false;
             this.$message.success('添加成功');
             this.initData();
+          }, err => {
+            this.fullscreenLoading = false
           })
         })
       },
@@ -189,11 +196,14 @@
         }).then(() => {
           this.fullscreenLoading = true;
           this.$store.dispatch('DeleteCategory',{
-            Id: data.id
+            Id: data.id,
+            AdminToken: getToken()
           }).then(response=>{
             this.fullscreenLoading = false;
             this.$message.success('添加成功');
             this.initData();
+          }, err => {
+            this.fullscreenLoading = false
           })
         })
       },

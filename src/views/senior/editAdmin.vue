@@ -62,6 +62,8 @@
 
 <script>
   import VDistpicker from 'v-distpicker'
+  import { getToken } from '@/utils/auth' // 验权
+  
   export default {
     data() {
       return {
@@ -155,7 +157,8 @@
         if(!this.Form.status)return this.$message.error('请选择审核状态');
         this.fullscreenLoading = true;
         const FromData = {
-          token: this.$route.params.id,
+          AdminToken: getToken(),
+          TargetId: this.$route.params.id,
           // password: this.Form.password, //暂时不能修改密码
           phone: this.Form.phone, 
           roles: this.Form.selectedPermission, 

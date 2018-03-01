@@ -127,6 +127,8 @@
   import {
     parseTime
   } from '@/utils'
+  import { getToken } from '@/utils/auth' // 验权
+  
   export default {
     data() {
       return {
@@ -221,6 +223,7 @@
           Id: this.Form.id,
           type: this.Form.type,
           summary: this.Form.summary,
+          AdminToken: getToken(),
           content: this.Form.content,
           product_list: this.Form.product_list,
           start_date: this.dateTimePicker.selectDate[0],

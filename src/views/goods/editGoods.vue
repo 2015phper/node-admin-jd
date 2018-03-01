@@ -95,6 +95,7 @@
 
 <script>
   import VDistpicker from 'v-distpicker'
+  import { getToken } from '@/utils/auth' // 验权
 
   export default {
     data() {
@@ -187,6 +188,7 @@
         const FromData = {
           Id: this.$route.params.id,
           status: this.Form.status,
+          AdminToken: getToken(),
           productName: this.Form.productName,
           categoryId: this.categoryData.defaultCategory.Id[0],
           summary: this.Form.summary,

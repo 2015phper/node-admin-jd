@@ -53,6 +53,7 @@
   import {
     parseTime
   } from '@/utils'
+  import { getToken } from '@/utils/auth' // 验权
   export default {
     data() {
       return {
@@ -98,7 +99,8 @@
         }).then(() => {
           this.fullscreenLoading = true;
           this.$store.dispatch('DeleteArticle', {
-            Id: Id
+            Id: Id,
+            AdminToken: getToken()
           }).then(response => {
             this.fullscreenLoading = false;
             this.updatedData();

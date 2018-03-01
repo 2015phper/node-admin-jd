@@ -130,8 +130,9 @@ export const constantRouterMap = [{
         icon: 'table'
       }
     }, {
-      path: 'addGoods/:shopId?',
+      path: 'addGoods/:shopId',
       name: 'addGoods',
+      hidden: true,
       component: _import('goods/addGoods'),
       meta: {
         title: '添加商品',

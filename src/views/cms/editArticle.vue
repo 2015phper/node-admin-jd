@@ -84,6 +84,8 @@
 <script>
   import VDistpicker from 'v-distpicker'
   import VueDPlayer from 'vue-dplayer'
+  import { getToken } from '@/utils/auth' // 验权
+  
   export default {
     data() {
       return {
@@ -166,6 +168,7 @@
         this.fullscreenLoading = true;
         const FromData = {
           Id: this.Form.id,
+          AdminToken: getToken(),
           article_title: this.Form.article_title,
           article_url: this.Form.article_url,
           type: this.Form.type,

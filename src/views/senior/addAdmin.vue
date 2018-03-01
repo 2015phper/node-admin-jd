@@ -130,7 +130,7 @@
         },err=>{this.fullscreenLoading = false})
       },
       handleAvatarSuccess(res, file) {
-        this.Form.imageUrl = 'http://awei.fun/api/resouces/' + file.response.Data["0"].filename;
+        this.Form.imageUrl = file.response.Data["0"].filename;
       },
       onDistpickerSelected(data) {
         this.Form.addressParams.province = data.province.value;

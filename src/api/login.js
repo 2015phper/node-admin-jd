@@ -16,7 +16,7 @@ export function getInfo(token) {
     url: '/system/GetAdminInfo',
     method: 'post',
     data: {
-      token: token
+      AdminToken: token
     }
   })
 }

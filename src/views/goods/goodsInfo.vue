@@ -53,6 +53,7 @@
   import {
     mapGetters
   } from 'vuex';
+  import { getToken } from '@/utils/auth' // 验权
   export default {
     data() {
       return {
@@ -89,7 +90,8 @@
         }).then(() => {
           this.fullscreenLoading = true;
           this.$store.dispatch('DeleteGoods', {
-            Id: Id
+            Id: Id,
+            AdminToken: getToken()
           }).then(response => {
             this.fullscreenLoading = false;
             this.updatedData();

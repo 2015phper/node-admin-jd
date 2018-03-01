@@ -91,9 +91,9 @@ const admin = {
     AdminList({
       commit,
       state
-    }) {
+    },formData) {
       return new Promise((resolve, reject) => {
-        getAdminList().then(response=>{
+        getAdminList(formData).then(response=>{
           commit('SET_ADMIN_DATA',response);
           resolve(response);
         }).catch(error => {

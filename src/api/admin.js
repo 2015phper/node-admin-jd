@@ -23,11 +23,11 @@ export function authorizedAdmin(params) {
     data: params
   })
 }
-export function getAdminList() {
+export function getAdminList(params) {
   return request({
     url: '/system/GetAdminList',
     method: 'post',
-    data: {}
+    data: params
   })
 }
 export function getAdminInfo(params) {
