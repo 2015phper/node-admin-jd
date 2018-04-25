@@ -20,7 +20,7 @@ __本项目纯属个人瞎弄，正常购买商品请选择京东官方App__
 [查看demo请戳这里](https://awei.fun/shop/mobile)（请用chrome手机模式预览）
 
 [后台管理系统请戳这里](https://awei.fun/shop/admin)（请用chrome手机模式预览）
-
+`
 
 ## 效果展示
 
